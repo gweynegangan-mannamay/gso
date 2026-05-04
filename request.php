@@ -1,6 +1,8 @@
 <?php
 include 'db_connection.php';
 
+$trip_tickets = $con->query("SELECT driver_name FROM trip_tickets ORDER BY driver_name ASC");
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Combine date + time
@@ -70,14 +72,26 @@ $stmt->bind_param("sssssss",
 
 <form method="POST" class="bg-white p-6 rounded-xl shadow max-w-4xl mx-auto space-y-6">
 
-  <!-- Personal Info -->
+ <!-- Personal Info -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <!-- ✅ DRIVER DROPDOWN -->
     <div>
       <label class="block font-medium mb-1">Driver's Full Name</label>
-      <input type="text" name="fullname" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      <select name="fullname" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+        <option value=""></option>
+
+        <?php while($row = $trip_tickets->fetch_assoc()): ?>
+          <option value="<?= htmlspecialchars($row['driver_name']) ?>">
+            <?= htmlspecialchars($row['driver_name']) ?>
+          </option>
+        <?php endwhile; ?>
+
+      </select>
     </div>
 
-  <div>
+    <div>> 
+
   <label class="block font-medium mb-1">Vehicle Plate No.</label>
   <input type="text" name="vehicle_plate" 
          class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" 

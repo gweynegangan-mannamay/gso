@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 include("db_connection.php");
 include("function.php");
@@ -27,65 +27,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 <html>
 <head>
     <title>Signup</title>
-    <style>
-        body { 
-            margin: 0; 
-            height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            background: url('pictures/BG-ISU.C.jpg') no-repeat center center/cover; 
-            font-family: Arial, sans-serif; 
-        }
-        .box { 
-            background: #05680a; 
-            padding: 30px; 
-            width: 300px; 
-            border-radius: 10px; 
-            text-align: center; 
-            color: white; 
-        }
-        .input { 
-            width: 100%; 
-            padding: 10px; 
-            margin-top: 10px; 
-            border: none; 
-            border-radius: 5px; 
-            box-sizing: border-box; 
-        }
-        .btn { 
-            width: 100%; 
-            padding: 10px; 
-            margin-top: 15px; 
-            background: #3b82f6; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-        }
-        .btn:hover { 
-            background: #2563eb; 
-        }
-        .logo {
-            width: 100px;    
-            height: 100px;   
-            object-fit: contain;    
-            margin-bottom: 10px;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="m-0 h-screen flex justify-center items-center bg-[url('pictures/BG-ISU.C.jpg')] bg-cover bg-center font-sans">
 
-<div class="box">
+<div class="bg-[#05680a] p-8 w-[290px] rounded-lg text-center text-white">
     <form method="post">
-        <img src="pictures/isu-logo.png" alt="Logo" class="logo">
-        <h2>Signup</h2>
+        <img src="pictures/isu-logo.png" alt="Logo" class="w-[100px] h-[100px] object-contain mb-2 mx-auto">
+        <h2 class="text-2xl font-semibold">Sign-up</h2>
         
-        <input class="input" type="text" name="user_name" placeholder="Username" required>
-        <input class="input" type="password" name="password" placeholder="Password" required>
+        <input class="w-100 p-1 mt-1 border-none rounded box-border text-black" type="text" name="user_name" placeholder="Username" required>
+        <input class="w-100 p-1 mt-2 border-none rounded box-border text-black" type="password" name="password" placeholder="Password" required>
         
-        <input class="btn" type="submit" value="Save">
-        
+        <input class="w-30 p-2 mt-3  text-white  rounded cursor-pointer hover:bg-blue-600" type="submit" value="Sign-up">
         
     </form>
 </div>
